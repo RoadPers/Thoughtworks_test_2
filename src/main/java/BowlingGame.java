@@ -32,12 +32,13 @@ public class BowlingGame {
 		for (char w:tmp ) {
 			if (w == 'X') {
 				count++;
+				if(count >= 10) break;
 			}
 		}
 		//开始计数加和
 		int sum = 0;
 		int ball_number = NUMOFBOX * 2 - count;//一局打的球数（真正计分的，不包含额外击球）
-		for(int i = 1; i <= ball_number; i++){ 
+		for(int i = 1; i <= ball_number ; i++){ 
 			if(tmp[i] == 'X'){
 				sum += ( value(tmp[i-1],tmp[i]) + value(tmp[i], tmp[i+1]) + value(tmp[i+1], tmp[i+2]) );
 			}else if (tmp[i] == '/') {
@@ -47,8 +48,10 @@ public class BowlingGame {
 			}else{
 				sum += 0;
 			}
+
 		}	
         return sum;
     }
+
 
 }
